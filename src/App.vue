@@ -1,32 +1,52 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="#111111"
+      dark
+      height="70"
+    >
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Name"
+          class="shrink"
+          contain
+          min-width="100"
+          src="https://nanocoder.pl/wp-content/uploads/2020/06/Nanocoder-logo-white.svg"
+          width="180"
+        />
+      </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn
+        href="https://nanocoder.pl"
+        target="_blank"
+        text
+      >
+        <span class="mr-2">Home page</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+    <v-main>
+      <v-container
+        class="fill-height pt-12 pb-12"
+        fluid
+      >
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
+  export default {
+    name: 'App',
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+    data: () => ({
+      //
+    })
   }
-}
-</style>
+</script>
