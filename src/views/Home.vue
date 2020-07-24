@@ -4,7 +4,7 @@
     class="pl-lg-10 pr-lg-10 pl-md-6 pr-md-6 pl-sm-4 pr-sm-4 pl-2 pr-2"
   >
     <v-col cols="12" xs="12" md="5" class="pr-4 pt-3">
-      <v-sheet color="#ffffff" :elevation="4" class="sheet">
+      <v-sheet color="#ffffff" class="sheet">
         <h2>Dane wejściowe</h2>
 
         <v-divider class="mt-2 mb-6"></v-divider>
@@ -30,7 +30,7 @@
           </v-btn>
         </div>
       </v-sheet>
-      <v-sheet color="#ffffff" :elevation="4" class="sheet pb-10">
+      <v-sheet color="#ffffff" class="sheet pb-10">
 
         <h2>Wyniki losowania</h2>
 
@@ -68,7 +68,7 @@
       </v-sheet>
     </v-col>
     <v-col cols="12" xs="12" md="7">
-      <v-sheet color="#ffffff" :elevation="4" class="sheet">
+      <v-sheet color="#ffffff" class="sheet">
         <h2>Zbiorcze wyniki</h2>
 
         <v-divider class="mt-1 mb-2"></v-divider>
@@ -125,15 +125,15 @@
           </v-col>
         </v-row>
       </v-sheet>
-      <v-sheet color="#ffffff" :elevation="4" class="sheet" v-if="results.length > 1">
-        <h4>Wykres zysków / strat</h4>
+      <v-sheet color="#ffffff" class="sheet" v-if="results.length > 1">
+        <h2>Wykres zysków / strat</h2>
 
         <v-divider class="mt-1 mb-2"></v-divider>
         <v-sparkline
           :key="String()"
           :smooth="16"
           :gradient="['#1feaea', '#ffd200', '#f72047']"
-          :line-width="1"
+          :line-width="2"
           :value="resultsSparkline"
           :auto-draw="true"
           stroke-linecap="round"
@@ -141,9 +141,9 @@
         ></v-sparkline>
       </v-sheet>
 
-      <v-sheet color="#ffffff" :elevation="4" class="sheet">
+      <v-sheet color="#ffffff" class="sheet">
 
-        <h4 class="mt-4 mb-1">Dane wszystkich losowań</h4>
+        <h2 class="mt-4 mb-1">Dane wszystkich losowań</h2>
 
         <v-data-table
           :headers="headers"
@@ -173,12 +173,12 @@
     name: 'Home',
 
     data: () => ({
-      wallet: 2048,
-      tryHard: 2,
+      wallet: 16384,
+      tryHard: 1,
       tryHardUsed: 0,
       outputWallet: 0,
       outputWalletByTime: 0,
-      bet: 0.2,
+      bet: 1,
       time: 20,
       outputTime: 0,
       games: 500,
@@ -384,5 +384,6 @@
     border-radius: 12px;
     padding: 15px 20px;
     margin: 24px 0;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .1) !important;
   }
 </style>
