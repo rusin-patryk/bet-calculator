@@ -3,7 +3,7 @@
     justify="center"
     class="pl-lg-10 pr-lg-10 pl-md-6 pr-md-6 pl-sm-2 pr-sm-2 pl-0 pr-0"
   >
-    <v-col cols="12" xs="12" md="5" class="pr-4 pt-3">
+    <v-col cols="12" xs="12" md="5" class="pr-3 pt-3">
       <v-sheet color="#ffffff" class="sheet">
         <h2>Dane wejściowe</h2>
 
@@ -18,25 +18,25 @@
                       v-model="tryHard" :rules="[rules.required, rules.number]"></v-text-field>
         <div class="d-flex justify-space-between">
           <div class="d-flex">
-            <v-btn @click.stop="startSpin" medium class="secondary menu-text-button mb-7 mt-5 d-block">
+            <v-btn @click.stop="startSpin" medium class="secondary menu-text-button mb-2 mt-1 d-block">
               START
             </v-btn>
             <v-btn @click="startSpinTenTimes" medium color="#656565" dark
-                   class="ml-2 menu-text-button mb-7 mt-5 d-block">
+                   class="ml-2 menu-text-button mb-2 mt-1 d-block">
               X 10
             </v-btn>
           </div>
 
-          <v-btn @click.stop="reload" medium class="menu-text-button mb-7 mt-5 d-block">
+          <v-btn @click.stop="reload" medium class="menu-text-button mb-2 mt-1 d-block">
             WYCZYŚĆ
           </v-btn>
         </div>
       </v-sheet>
-      <v-sheet color="#ffffff" class="sheet pb-10">
+      <v-sheet color="#ffffff" class="sheet pb-4">
 
         <h2>Wyniki losowania</h2>
 
-        <v-divider class="mt-2 mb-6"></v-divider>
+        <v-divider class="mt-2 mb-3"></v-divider>
 
         <v-text-field label="Liczba przegranych pod rząd" required readonly number
                       v-model="outputLost"></v-text-field>
@@ -50,7 +50,7 @@
                       v-model="outputGames"></v-text-field>
         <v-text-field label="Procent wygranych" required readonly number
                       v-model="outputWinRatio"></v-text-field>
-        <v-expansion-panels accordion class="mt-8">
+        <v-expansion-panels accordion class="mt-2">
           <v-expansion-panel>
             <v-expansion-panel-header color="#efefef">Wszystkie liczby z losowania</v-expansion-panel-header>
             <v-expansion-panel-content class="pt-2">
@@ -79,7 +79,7 @@
         >
           <v-col cols="12" xs="12" sm="6" md="6" lg="6" xl="3">
             <v-card
-              height="130px"
+              height="140px"
               color="#F64E60"
               dark
               class="pt-3 pl-4 pb-3 pr-4 d-flex flex-column justify-center"
@@ -91,7 +91,7 @@
           </v-col>
           <v-col cols="12" xs="12" sm="6" md="6" lg="6" xl="3">
             <v-card
-              height="130px"
+              height="140px"
               color="#4AB58E"
               dark
               class="pt-3 pl-4 pb-3 pr-4 d-flex flex-column justify-center"
@@ -103,7 +103,7 @@
           </v-col>
           <v-col cols="12" xs="12" sm="6" md="6" lg="6" xl="3">
             <v-card
-              height="130px"
+              height="140px"
               color="#3699FF"
               dark
               class="pt-3 pl-4 pb-3 pr-4 d-flex flex-column justify-center"
@@ -115,7 +115,7 @@
           </v-col>
           <v-col cols="12" xs="12" sm="6" md="6" lg="6" xl="3">
             <v-card
-              height="130px"
+              height="140px"
               color="#8950FC"
               dark
               class="pt-3 pl-4 pb-3 pr-4 d-flex flex-column justify-center"
@@ -139,13 +139,16 @@
           :value="resultsSparkline"
           :auto-draw="true"
           stroke-linecap="round"
-          height="40"
+          height="50"
+          class="mt-2 mb-1"
         ></v-sparkline>
       </v-sheet>
 
       <v-sheet color="#ffffff" class="sheet">
 
-        <h2 class="mt-4 mb-1">Dane wszystkich losowań</h2>
+        <h2>Dane wszystkich losowań</h2>
+
+        <v-divider class="mt-1 mb-4"></v-divider>
 
         <v-data-table
           :headers="headers"
@@ -155,11 +158,12 @@
           :sort-by="['index']"
           :sort-desc="[true]"
           class="elevation-1 mt-3"
+          dense
         >
           <template v-slot:item.status="{ item }">
-            <v-chip v-if="item.status" color="green" dark>Wygrana&nbsp;<span v-if="item.tryHardUsed > 0" class="ml-1"> * {{item.tryHardUsed}} *</span>
+            <v-chip v-if="item.status" color="green" small dark>Wygrana&nbsp;<span v-if="item.tryHardUsed > 0" class="ml-1"> * {{item.tryHardUsed}} *</span>
             </v-chip>
-            <v-chip v-if="!item.status" color="red" dark>
+            <v-chip v-if="!item.status" color="red" small dark>
               Przegrana&nbsp;<span v-if="item.tryHardUsed > 0" class="ml-1"> * {{item.tryHardUsed}} *</span>
             </v-chip>
           </template>
@@ -393,6 +397,6 @@
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .1) !important;
   }
   .v-input__control {
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
 </style>
