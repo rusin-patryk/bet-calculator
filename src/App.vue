@@ -31,7 +31,7 @@
 
     <v-main>
       <v-container
-        class="fill-height pt-12 pb-12"
+        class="fill-height pt-2 pb-2"
         fluid
       >
         <router-view></router-view>
