@@ -1,7 +1,7 @@
 <template>
   <v-row
     justify="center"
-    class="pl-lg-10 pr-lg-10 pl-md-6 pr-md-6 pl-sm-4 pr-sm-4 pl-2 pr-2"
+    class="pl-lg-10 pr-lg-10 pl-md-6 pr-md-6 pl-sm-2 pr-sm-2 pl-0 pr-0"
   >
     <v-col cols="12" xs="12" md="5" class="pr-4 pt-3">
       <v-sheet color="#ffffff" class="sheet">
@@ -28,7 +28,7 @@
           </div>
 
           <v-btn @click.stop="reload" medium class="menu-text-button mb-7 mt-5 d-block">
-            WYCZYŚ WSZYSTKO
+            WYCZYŚĆ
           </v-btn>
         </div>
       </v-sheet>
