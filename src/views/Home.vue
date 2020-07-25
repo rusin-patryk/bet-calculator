@@ -8,12 +8,14 @@
         <h2>Dane wejściowe</h2>
 
         <v-divider class="mt-2 mb-6"></v-divider>
-        <v-text-field label="Kwota wpłaty" number required v-model="wallet"></v-text-field>
-        <v-text-field label="Kwota jednego obstawienia" number required v-model="bet"></v-text-field>
-        <v-text-field label="Czas 1 losowania w sec" number required v-model="time"></v-text-field>
-        <v-text-field label="Liczba losowań" number required v-model="games"></v-text-field>
-        <v-text-field label="* Dodatkowe próby po wykorzystaniu wpłaty *" number required
-                      v-model="tryHard"></v-text-field>
+        <v-text-field label="Kwota wpłaty" v-model="wallet" :rules="[rules.required, rules.number]"></v-text-field>
+        <v-text-field label="Kwota jednego obstawienia" v-model="bet"
+                      :rules="[rules.required, rules.number]"></v-text-field>
+        <v-text-field label="Czas 1 losowania w sec" v-model="time"
+                      :rules="[rules.required, rules.number]"></v-text-field>
+        <v-text-field label="Liczba losowań" v-model="games" :rules="[rules.required, rules.number]"></v-text-field>
+        <v-text-field label="* Dodatkowe próby po wykorzystaniu wpłaty *"
+                      v-model="tryHard" :rules="[rules.required, rules.number]"></v-text-field>
         <div class="d-flex justify-space-between">
           <div class="d-flex">
             <v-btn @click.stop="startSpin" medium class="secondary menu-text-button mb-7 mt-5 d-block">
@@ -195,6 +197,10 @@
       search: '',
       results: [],
       index: 0,
+      rules: {
+        required: value => !!value || 'Pole wymagane.',
+        number: value => !isNaN(value) || 'Wartość musi być liczbą.'
+      },
       headers: [
         {
           text: 'Lp.',
@@ -385,5 +391,8 @@
     padding: 15px 20px;
     margin: 24px 0;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .1) !important;
+  }
+  .v-input__control {
+    margin-bottom: 5px;
   }
 </style>
