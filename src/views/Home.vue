@@ -34,7 +34,18 @@
       </v-sheet>
       <v-sheet color="#ffffff" class="sheet pb-4">
 
-        <h2>Wyniki losowania</h2>
+        <div class="d-flex justify-space-between">
+          <h2>Wyniki losowania</h2>
+
+          <div v-if="results.length > 0">
+            <v-chip v-if="results[results.length -1].status" color="green" dark>Wygrana&nbsp;<span
+              v-if="results[results.length -1].tryHardUsed > 0" class="ml-1"> * {{results[results.length -1].tryHardUsed}} *</span>
+            </v-chip>
+            <v-chip v-if="!results[results.length -1].status" color="red" dark>
+              Przegrana&nbsp;<span v-if="results[results.length -1].tryHardUsed > 0" class="ml-1"> * {{results[results.length -1].tryHardUsed}} *</span>
+            </v-chip>
+          </div>
+        </div>
 
         <v-divider class="mt-2 mb-3"></v-divider>
 
@@ -52,7 +63,9 @@
                       v-model="outputWinRatio"></v-text-field>
         <v-expansion-panels accordion class="mt-2">
           <v-expansion-panel>
-            <v-expansion-panel-header color="#efefef">Wszystkie liczby z losowania</v-expansion-panel-header>
+            <v-expansion-panel-header color="#efefef">
+              Wszystkie liczby z losowania
+            </v-expansion-panel-header>
             <v-expansion-panel-content class="pt-2">
               <small>Wyników: <strong>{{filteredNumbersList.length}}</strong></small>
               <v-text-field label="Szukaj liczby" @input="searchNumbers" v-model="search"></v-text-field>
@@ -161,7 +174,8 @@
           dense
         >
           <template v-slot:item.status="{ item }">
-            <v-chip v-if="item.status" color="green" small dark>Wygrana&nbsp;<span v-if="item.tryHardUsed > 0" class="ml-1"> * {{item.tryHardUsed}} *</span>
+            <v-chip v-if="item.status" color="green" small dark>Wygrana&nbsp;<span v-if="item.tryHardUsed > 0"
+                                                                                   class="ml-1"> * {{item.tryHardUsed}} *</span>
             </v-chip>
             <v-chip v-if="!item.status" color="red" small dark>
               Przegrana&nbsp;<span v-if="item.tryHardUsed > 0" class="ml-1"> * {{item.tryHardUsed}} *</span>
@@ -180,7 +194,7 @@
 
     data: () => ({
       wallet: 16384,
-      tryHard: 1,
+      tryHard: 0,
       tryHardUsed: 0,
       outputWallet: 0,
       outputWalletByTime: 0,
@@ -274,15 +288,16 @@
         let won = 0
         let randomResult = 0
         let triedHard = this.tryHard
+        let games = this.games
+        this.outputWallet = this.wallet
         this.outputTime = 0
         this.outputLost = 0
-        this.outputWallet = this.wallet
         this.outputGames = 0
         this.outputWinRatio = 0
         this.numbers = []
         this.tryHardUsed = 0
 
-        for (let i = 0; i < this.games; i++) {
+        for (let i = 0; i < games; i++) {
           this.outputGames++
           this.outputWallet -= gameBet
           this.outputTime += this.time
@@ -311,13 +326,16 @@
           lastBet = newBet
           if (!newBet) {
             gameBet *= 2
-            if (gameBet > this.outputWallet) {
+            if (gameBet >= this.outputWallet - (this.outputWallet - this.wallet > 0 ? this.outputWallet - this.wallet : 0)) {
               if (triedHard > 0) {
                 triedHard--
                 this.tryHardUsed++
               } else {
                 break
               }
+            }
+            if (i + 1 >= this.games) {
+              games++
             }
           } else {
             gameBet = this.bet
@@ -396,6 +414,7 @@
     margin: 24px 0;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .1) !important;
   }
+
   .v-input__control {
     margin-bottom: 3px;
   }
