@@ -383,7 +383,7 @@
         this.sumOutputWallet = Math.floor(this.sumOutputWallet * 100) / 100
         this.sumOutputWinRatio = `${Math.floor((this.sumOutputWinRatio * 100 / this.results.length) * 100) / 100} %`
         this.sumOutputWalletByTime = Math.floor((this.sumOutputWalletByTime / this.results.length) * 100) / 100
-        this.sumOutputTime = Math.floor(this.sumOutputTime * 10) / 10
+        this.sumOutputTime = `${Math.floor(this.sumOutputTime * 10) / 10} h`
       },
 
       getRandom () {
