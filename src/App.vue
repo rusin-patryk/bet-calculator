@@ -7,20 +7,13 @@
       height="70"
     >
       <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Name"
-          class="shrink"
-          contain
-          min-width="100"
-          src="https://nanocoder.pl/wp-content/uploads/2020/06/Nanocoder-logo-white.svg"
-          width="180"
-        />
+        <h2>Bet Calculator <small>- spatryk.in</small></h2>
       </div>
 
       <v-spacer></v-spacer>
 
       <v-btn
-        href="https://nanocoder.pl"
+        href="https://patryk.in"
         target="_blank"
         text
       >
