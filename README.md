@@ -19,7 +19,9 @@ W przypadku ustawienia np. 500 losowań, gdy losowanie nr 500 będzie przegrane,
 Czas 1 losowania służy do obliczenia zarobku w przeliczeniu na jednostkę czasu.
 Dodatokwe próby oznaczają, że aplikacja podaną ilość razy będzie ponawiać losowanie pomimo wyczerpania się budżetu.
 
-![Screen](https://patryk.in/wp-content/uploads/2021/01/Opera-Zrzut-ekranu_2021-01-04_151547_localhost.png)
+![Screen 1](https://patryk.in/wp-content/uploads/2021/01/Opera-Zrzut-ekranu_2021-01-04_151547_localhost.png)
+
+![Screen 2](https://patryk.in/wp-content/uploads/2021/01/Opera-Zrzut-ekranu_2021-01-04_151907_localhost.png)
 
 ## TODO
 

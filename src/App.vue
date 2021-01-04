@@ -7,7 +7,7 @@
       height="70"
     >
       <div class="d-flex align-center">
-        <h2>Bet Calculator <small>- spatryk.in</small></h2>
+        <h2>Bet Calculator <small>- patryk.in</small></h2>
       </div>
 
       <v-spacer></v-spacer>
